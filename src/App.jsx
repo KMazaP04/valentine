@@ -25,20 +25,24 @@ export default function Page() {
     setYesPressed(true);
     
     try {
-      // Using Netlify Forms
-      const formData = new FormData();
-      formData.append('form-name', 'valentine-response');
-      formData.append('response', 'YES');
-      formData.append('no-count', noCount);
-      formData.append('timestamp', new Date().toLocaleString());
-      
-      await fetch('/', {
+      // Using FormSubmit.co - replace YOUR_EMAIL with Kevin's actual email
+      const response = await fetch('https://formsubmit.co/ajax/kmazap040@gmail.com', {
         method: 'POST',
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: "Angela/PokemonLettuce Response",
+          message: `She said YES! 🎉\n\nBut she pressed NO ${noCount} times first 😅\n\nTimestamp: ${new Date().toLocaleString()}`,
+          _subject: "🎉 Angela Said YES!",
+          _template: "table"
+        })
       });
       
-      console.log('Notification sent successfully!');
+      if (response.ok) {
+        console.log('Notification sent successfully!');
+      }
     } catch (error) {
       console.error('Error sending notification:', error);
     } finally {
@@ -77,13 +81,6 @@ export default function Page() {
 
   return (
     <>
-      {/* Hidden form for Netlify form detection */}
-      <form name="valentine-response" netlify="true" hidden>
-        <input type="text" name="response" />
-        <input type="text" name="no-count" />
-        <input type="text" name="timestamp" />
-      </form>
-
     {/* Background Music with toggle */}
       {musicPlaying && (
         <iframe 
