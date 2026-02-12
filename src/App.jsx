@@ -81,30 +81,26 @@ export default function Page() {
 
   return (
     <>
-    {/* Background Music with toggle */}
-      {musicPlaying && (
-        <iframe 
+      {/* Spotify Player - Fixed in top-right corner */}
+      <div className="fixed top-4 right-4 z-10 flex flex-col items-end gap-2">
+        <iframe
           ref={iframeRef}
+          data-testid="embed-iframe" 
           id="background-music" 
-          style={{ display: 'none' }} 
-          src="https://open.spotify.com/embed/track/5WDLRQ3VCdVrKw0njWe5E5?utm_source=generator&autoplay=1" 
-          width="0" 
-          height="0" 
-          frameBorder="0" 
+          src="https://open.spotify.com/embed/track/5WDLRQ3VCdVrKw0njWe5E5?utm_source=generator" 
+          width="300" 
+          height="80" 
+          frameBorder="0"
+          allowFullScreen=""  
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
           loading="lazy"
-          title="Background Music"
+          className="rounded-lg shadow-lg"
         />
-      )}
+        <div className="text-xs text-zinc-600 bg-white/80 backdrop-blur px-2 py-1 rounded">
+          Please press play ▶️, I couldn't get it to play automatically 😅
+        </div>
+      </div>
 
-      {/* Music Toggle Button */}
-      <button
-        onClick={toggleMusic}
-        className="fixed top-4 right-4 bg-rose-500 hover:bg-rose-600 text-white p-3 rounded-full shadow-lg z-10"
-        aria-label="Toggle music"
-      >
-        {musicPlaying ? "🔊" : "🔇"}
-      </button>
       {/* Heart Background */}
       <div className="heart-background">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
