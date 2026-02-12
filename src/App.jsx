@@ -1,23 +1,16 @@
 import { useState, useRef  } from "react";
-import lovesvg from "./assets/All You Need Is Love SVG Cut File.svg";
-import lovesvg2 from "./assets/Love In The Air SVG Cut File.svg";
 import { SvgDrawReveal } from "./SvgDrawReveal";
 import BouquetSvg from "./assets/flowers-bouquet-svgrepo-com.svg?react";
 
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
-  const [musicPlaying, setMusicPlaying] = useState(false);
   const [sending, setSending] = useState(false);
-  const yesButtonSize = noCount * 20 + 16;
+  const yesButtonSize = noCount * 15 + 16;
   const iframeRef = useRef(null);
 
   const handleNoClick = () => {
     setNoCount(noCount + 1);
-  };
-
-  const toggleMusic = () => {
-    setMusicPlaying(!musicPlaying);
   };
 
   const handleYesClick = async () => {
@@ -116,7 +109,7 @@ export default function Page() {
       </div>
 
       {/* Main Content */}
-      <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
+      <div className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 py-10 selection:bg-rose-600 selection:text-white text-zinc-900">
         {yesPressed ? (
           <>
       {/* GIF Row */}
@@ -151,7 +144,7 @@ export default function Page() {
         </p>
 
         <p className="text-lg md:text-xl opacity-80">
-          I admire the persistence 😌
+          I'll remember this😑
         </p>
 
         <div className="text-sm opacity-60 pt-2">
