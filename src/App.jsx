@@ -119,25 +119,51 @@ export default function Page() {
       <div className="overflow-hidden flex flex-col items-center justify-center pt-4 h-screen -mt-16 selection:bg-rose-600 selection:text-white text-zinc-900">
         {yesPressed ? (
           <>
-          
-          <div className="flex flex-row">
-            <img src="https://media.tenor.com/47JhmZOqxm8AAAAm/dudu-bubu-dudu-kiss-bubu-crashing-to-the-walls.webp" />
-            <img src="https://media.tenor.com/3Yml0nL4aBwAAAAm/cosytales-love.webp" />
-            <img src="https://media.tenor.com/i9yvlqt2aYoAAAAm/peach-goma-peach-and-goma.webp" />
-            <img src="https://media.tenor.com/OdmWiTKioBQAAAAm/dinosaur-french-kiss.webp" />
-            <img src="https://media.tenor.com/5XOehZUJ1MAAAAAm/cute-cat-couple.webp" />
-            <img src="https://media.tenor.com/3L4TBFeaPVwAAAAM/peach-goma-kissing.gif" />
-            </div>
-            
-            <div className="flex flex-col items-center text-4xl md:text-6xl font-bold my-4">
-              Ok Yayyyyy!!! But you pressed No {noCount} times
-              <div className="text-sm">Kevin has been emailed on your response</div>
-            </div>
-            <div className="flex flex-col items-center gap-4">
-            <SvgDrawReveal Svg={BouquetSvg} play={yesPressed} size={360} />
-            {/* or Svg={LoveSvg} */}
-          </div>
-          </>
+      {/* GIF Row */}
+      <div className="flex flex-wrap justify-center gap-4 max-w-6xl mb-8">
+        {[
+          "https://media.tenor.com/47JhmZOqxm8AAAAm/dudu-bubu-dudu-kiss-bubu-crashing-to-the-walls.webp",
+          "https://media.tenor.com/3Yml0nL4aBwAAAAm/cosytales-love.webp",
+          "https://media.tenor.com/i9yvlqt2aYoAAAAm/peach-goma-peach-and-goma.webp",
+          "https://media.tenor.com/OdmWiTKioBQAAAAm/dinosaur-french-kiss.webp",
+          "https://media.tenor.com/5XOehZUJ1MAAAAAm/cute-cat-couple.webp",
+          "https://media.tenor.com/3L4TBFeaPVwAAAAM/peach-goma-kissing.gif"
+        ].map((src, index) => (
+          <img
+            key={index}
+            src={src}
+            className="w-36 md:w-32 lg:w-36 rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
+            alt="cute gif"
+          />
+        ))}
+      </div>
+
+      {/* Text Section */}
+      <div className="text-center max-w-3xl space-y-4 mb-10">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          Ok yayyyy!!! 🥹💖
+        </h1>
+
+        <p className="text-xl md:text-2xl">
+          But you pressed “No”{" "}
+          <span className="text-rose-600 font-semibold">{noCount}</span>{" "}
+          times…
+        </p>
+
+        <p className="text-lg md:text-xl opacity-80">
+          I admire the persistence 😌
+        </p>
+
+        <div className="text-sm opacity-60 pt-2">
+          Kevin has been notified of your decision 💌
+        </div>
+      </div>
+
+      {/* SVG Section */}
+      <div className="flex justify-center">
+        <SvgDrawReveal Svg={BouquetSvg} play={yesPressed} size={300} />
+      </div>
+    </>
         ) : (
           <>          
             <h1 className="text-4xl md:text-6xl my-4 text-center">
